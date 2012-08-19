@@ -1,0 +1,11 @@
+export TERM=screen-256color
+alias reload="source ~/.bashrc"
+alias vim="gvim -v"
+
+login() {
+  already_logged_in=`ssh-add -l | grep RSA | wc -l`
+  if [ "$already_logged_in" -eq "0" ]; then
+      eval `ssh-agent`
+      ssh-add
+  fi
+}

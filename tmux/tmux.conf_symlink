@@ -1,0 +1,34 @@
+# Use screen bindings
+unbind-key C-b
+set -g prefix C-a
+bind-key a send-prefix
+
+# Set TERM up so that VIM colors look correct.
+set -g default-terminal "screen-256color"
+
+# Fix the minimum duration between commands
+set -s escape-time 0
+
+# Set up Vim-like keybindings.
+setw -g mode-keys vi
+unbind h
+unbind j
+unbind k
+unbind l
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+unbind Up
+unbind Down
+unbind Left
+unbind Right
+
+# Set up pretty colors
+set -g status-fg colour15           # white
+#set -g status-bg colour88          # red
+set -g status-bg colour91           # purple
+setw -g window-status-current-bg colour15
+setw -g window-status-current-fg colour91
+set -g pane-border-fg black
+set -g pane-active-border-fg cyan

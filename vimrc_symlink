@@ -1,0 +1,123 @@
+""" presentation preferences
+set nocompatible
+set enc=utf-8                   " use UTF-8 encoding
+syntax enable                   " enable syntax highlighting
+set background=dark             " use a dark background
+colorscheme zenburn             " use the Zenburn color theme
+set number                      " show line numbers
+set title                       " show the file title when open
+if has("gui_running")           " gVim: maximize the window on startup
+    if has("win32")
+      set guifont=Consolas:h10
+    endif
+    set guioptions-=m               " gVim: remove menubar
+    set guioptions-=T               " gVim: remove toolbar
+    set columns=999 lines=999
+else
+    set term=screen-256color
+endif
+
+" set the default text with to 80 characters with an 8 character margin
+set textwidth=80
+set colorcolumn=-8,-7,-6,-5,-4,-3,-2,-1,-0
+" color the margin dark gray
+hi colorcolumn guibg=#303030 ctermbg=236
+
+" highlight all unnecessary whitespace as dark red
+hi ExtraWhitespace guibg=#5f0000 ctermbg=52
+hi OverLength guibg=#5f0000 guifg=#ffffff ctermbg=52 ctermfg=255
+if has("autocmd")
+    au BufWinEnter * let w:m1=matchadd("ExtraWhitespace", '\s\+$', -1)
+    au BufWinEnter * let w:m2=matchadd("OverLength", '\%>80v.\+', -1)
+endif
+
+""" usability settings
+set backspace=indent,eol,start  " Allow backspacing across lines
+set ttyfast                     " fast character scrolling
+set scrolloff=6                 " when scrolling to the end of a file, show at least 6 more lines
+set incsearch                   " use incremental search to find items as the search string is typed
+set hlsearch                    " search while typing, and highlight found terms
+set directory=.,$TEMP           " Use the TEMP directory if creating a new file
+set nowrap                      " don't wrap lines
+set showmode                    " show the mode you're in
+set numberwidth=5               " line numbers are at least 5 characters wide
+set laststatus=2                "show the status line at all times
+
+""" file format preferences
+set smartindent                 " automatically handle indentation
+set expandtab                   " use spaces instead of hard tabs
+set tabstop=4                   " use 2 spaces for tabs
+set shiftwidth=4                " set the default indentation width for smartindent
+
+set exrc                        " allow per-directory override of .vimrc settings
+set secure                      " disable unsafe commands in local .vimrc files
+
+" These settings make escaping insert and visual modes much faster when
+" using Vim in the terminal.
+set timeout timeoutlen=1000 ttimeoutlen=10
+
+""" macros
+function! Cleanfile()
+    if &modifiable
+        " convert tabs to spaces when reading and writing
+        set expandtab
+        retab! 4
+
+        " set the tab size to 2 spaces on any opened file
+        ":%s/\ \ \ \ /\ \ /e
+
+        " trim whitespace on save
+        :%s/\s\+$//e
+    endif
+endfunction
+autocmd! bufreadpost * call Cleanfile()
+autocmd! bufwritepre * call Cleanfile()
+
+""" vim discipline
+" unmap the arrow keys
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>
+inoremap <Up> <nop>
+inoremap <Down> <nop>
+inoremap <Left> <nop>
+inoremap <Right> <nop>
+" map the key sequence jf to Escape, to allow for rapid, immediate access to Normal mode
+inoremap jf <Esc>
+
+
+""" Vundle settings
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+" Bundles (Vundle is required)
+Bundle 'gmarik/vundle'
+" color scheme
+Bundle 'vim-scripts/Zenburn'
+" stylistic improvements
+Bundle 'scrooloose/nerdtree'
+Bundle 'kien/ctrlp.vim'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'vim-scripts/yavdb'
+" functional improvements
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-repeat'
+Bundle 'ervandew/supertab'
+Bundle 'vim-scripts/swap-parameters'
+" language add-ons
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'vim-scripts/grails-vim'
+filetype plugin indent on
+
+""" NERDTree settings
+" Leader-n maps starts off a nerdtree command
+noremap <Leader>n :NERDTree
+" set the working directory when changing root
+let NERDTreeChDirMode = 2
+""" CtrlP Settings
+" use file mode instead of path mode
+let g:ctrlp_by_filename = 1
+" manually control the working directory
+let g:ctrlp_working_path_mode = 0
