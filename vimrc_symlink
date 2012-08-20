@@ -114,6 +114,7 @@ filetype plugin indent on
 """ NERDTree settings
 " Leader-n maps starts off a nerdtree command
 noremap <Leader>n :NERDTree
+noremap <F2> :NERDTreeToggle<CR>
 " set the working directory when changing root
 let NERDTreeChDirMode = 2
 """ CtrlP Settings
@@ -121,3 +122,8 @@ let NERDTreeChDirMode = 2
 let g:ctrlp_by_filename = 1
 " manually control the working directory
 let g:ctrlp_working_path_mode = 0
+
+""" Filetype fixes
+if has("autocmd")
+    au BufNewFile,BufRead *.gsp  setlocal filetype=jsp
+endif
