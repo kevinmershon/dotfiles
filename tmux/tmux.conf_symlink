@@ -26,8 +26,10 @@ unbind Right
 
 # Set up pretty colors
 set -g status-fg colour15           # white
-#set -g status-bg colour88          # red
-set -g status-bg colour91           # purple
+if-shell 'test "`hostname`" = "nefarion"' \
+    'set -g status-bg colour88'     # red
+if-shell 'test "`hostname`" = "mershon-server"' \
+    'set -g status-bg colour91'     #purple
 setw -g window-status-current-bg colour15
 setw -g window-status-current-fg colour91
 set -g pane-border-fg black
