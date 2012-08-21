@@ -3,11 +3,16 @@ unbind-key C-b
 set -g prefix C-a
 bind-key a send-prefix
 
-# Set TERM up so that VIM colors look correct.
+# Set TERM up so that VIM colors look correct
 set -g default-terminal "screen-256color"
 
 # Fix the minimum duration between commands
 set -s escape-time 0
+
+# Allow for respawning windows when they're accidentally closed
+set -g set-remain-on-exit on
+unbind R
+bind R respawn-pane -k
 
 # Set up Vim-like keybindings.
 setw -g mode-keys vi
