@@ -1,4 +1,8 @@
 #!/bin/bash
+if [ `tmux list-sessions | grep work | wc -l` == "1" ]; then
+    tmux -2 attach -t work
+    exit
+fi
 tmux new-session -d -s work
 
 tmux new-window -t work:1 -n 'Vim' vim
