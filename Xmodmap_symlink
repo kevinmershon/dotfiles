@@ -1,0 +1,4 @@
+! Map Caplock as Control
+keycode 66 = Control_L
+! Map Control as Escape (for now)
+keycode 37 = Escape

@@ -58,7 +58,7 @@ set timeout timeoutlen=1000 ttimeoutlen=10
 
 """ macros
 function! Cleanfile()
-    if &modifiable
+    if &modifiable && &filetype!='make'
         " convert tabs to spaces when reading and writing
         set expandtab
         retab! 4
@@ -126,4 +126,5 @@ let g:ctrlp_working_path_mode = 0
 """ Filetype fixes
 if has("autocmd")
     au BufNewFile,BufRead *.gsp  setlocal filetype=jsp
+    au Filetype make setlocal noexpandtab
 endif
