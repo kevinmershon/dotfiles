@@ -9,3 +9,5 @@ login() {
       ssh-add
   fi
 }
+
+xmodmap ~/.Xmodmap
