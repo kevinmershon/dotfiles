@@ -109,6 +109,7 @@ Bundle 'vim-scripts/swap-parameters'
 " language add-ons
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'vim-scripts/grails-vim'
+Bundle 'groenewege/vim-less'
 filetype plugin indent on
 
 """ NERDTree settings
@@ -125,6 +126,9 @@ let g:ctrlp_working_path_mode = 0
 
 """ Filetype fixes
 if has("autocmd")
-    au BufNewFile,BufRead *.gsp  setlocal filetype=jsp
+    au BufRead,BufWrite *.gsp setlocal filetype=jsp
+    au BufRead,BufWrite *.less setlocal filetype=css
+    au BufRead,BufWrite capfile setlocal filetype=ruby
+    au BufRead,BufWrite *.coffee setlocal ts=2 sts=2 sw=2 expandtab
     au Filetype make setlocal noexpandtab
 endif
