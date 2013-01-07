@@ -1,0 +1,74 @@
+!
+!
+! In order for this mapping to work, edit xorg.conf and set your
+! keyboard to "us(intl)", then reboot.
+!
+! This file must be saved to ~/.Xmodmap
+! To revert to regular keyboard behavior, run the command "setxkbmap".
+! To re-execute the mapping in this file, run "xmodmap ~/.Xmodmap"
+!
+!
+
+! Map Caplock as Control and Control as Escape
+remove Lock = Caps_Lock
+remove Control = Control_L
+keycode 66 = Control_L
+keycode 37 = Escape
+add Control = Control_L
+
+! Enforce good shift behaviors
+clear Shift
+add Shift = Shift_L
+keycode 62 = ISO_Level3_Shift
+add mod5 = ISO_Level3_Shift
+
+! Left keys
+keycode 49 = grave grave NoSymbol NoSymbol asciitilde asciitilde
+keycode 10 = 1 1 NoSymbol NoSymbol exclam exclam
+keycode 11 = 2 2 NoSymbol NoSymbol at at
+keycode 12 = 3 3 NoSymbol NoSymbol numbersign numbersign
+keycode 13 = 4 4 NoSymbol NoSymbol dollar dollar
+keycode 14 = 5 5 NoSymbol NoSymbol percent percent
+keycode 15 = 6 6 NoSymbol NoSymbol asciicircum asciicircum
+keycode 24 = q q NoSymbol NoSymbol Q Q
+keycode 25 = w w NoSymbol NoSymbol W W
+keycode 26 = e e NoSymbol NoSymbol E E
+keycode 27 = r r NoSymbol NoSymbol R R
+keycode 28 = t t NoSymbol NoSymbol T T
+keycode 38 = a a NoSymbol NoSymbol A A
+keycode 39 = s s NoSymbol NoSymbol S S
+keycode 40 = d d NoSymbol NoSymbol D D
+keycode 41 = f f NoSymbol NoSymbol F F
+keycode 42 = g g NoSymbol NoSymbol G G
+keycode 52 = z z NoSymbol NoSymbol Z Z
+keycode 53 = x x NoSymbol NoSymbol X X
+keycode 54 = c c NoSymbol NoSymbol C C
+keycode 55 = v v NoSymbol NoSymbol V V
+keycode 56 = b b NoSymbol NoSymbol B B
+
+! Right keys
+keycode 16 = 7 ampersand NoSymbol NoSymbol 7 7
+keycode 17 = 8 asterisk NoSymbol NoSymbol 8 8
+keycode 18 = 9 parenleft NoSymbol NoSymbol 9 9
+keycode 19 = 0 parenright NoSymbol NoSymbol 0 0
+keycode 20 = minus underscore NoSymbol NoSymbol minus minus
+keycode 21 = equal plus NoSymbol NoSymbol equal equal
+keycode 29 = y Y NoSymbol NoSymbol y y
+keycode 30 = u U NoSymbol NoSymbol u u
+keycode 31 = i I NoSymbol NoSymbol i i
+keycode 32 = o O NoSymbol NoSymbol o o
+keycode 33 = p P NoSymbol NoSymbol p p
+keycode 34 = bracketleft braceleft NoSymbol NoSymbol bracketleft bracketleft
+keycode 35 = bracketright braceright NoSymbol NoSymbol bracketright bracketright
+keycode 51 = backslash bar NoSymbol NoSymbol backslash backslash
+keycode 43 = h H NoSymbol NoSymbol h h
+keycode 44 = j J NoSymbol NoSymbol j j
+keycode 45 = k K NoSymbol NoSymbol k k
+keycode 46 = l L NoSymbol NoSymbol l l
+keycode 47 = semicolon colon NoSymbol NoSymbol semicolon semicolon
+keycode 48 = apostrophe quotedbl NoSymbol NoSymbol apostrophe apostrophe
+keycode 57 = n N NoSymbol NoSymbol n n
+keycode 58 = m M NoSymbol NoSymbol m m
+keycode 59 = comma less NoSymbol NoSymbol comma comma
+keycode 60 = period greater NoSymbol NoSymbol period period
+keycode 61 = slash question NoSymbol NoSymbol slash slash
