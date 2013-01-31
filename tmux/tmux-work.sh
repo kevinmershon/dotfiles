@@ -1,5 +1,6 @@
 #!/bin/bash
-if [ `tmux list-sessions | grep work | wc -l` == "1" ]; then
+eval tmux has-session -t work > /dev/null 2>&1
+if [ $? != 1 ]; then
     tmux -2 attach -t work
     exit
 fi
