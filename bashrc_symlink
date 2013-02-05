@@ -1,6 +1,9 @@
+#!/bin/bash
 export TERM=screen-256color
 alias reload="source ~/.bashrc"
-alias vim="gvim -v"
+alias tmux-work="~/workspace/dotfiles/tmux/tmux-work.sh"
+alias +='pushd .'
+alias -- -='popd'
 
 login() {
   already_logged_in=`ssh-add -l | grep RSA | wc -l`
@@ -9,5 +12,3 @@ login() {
       ssh-add
   fi
 }
-
-xmodmap ~/.Xmodmap
