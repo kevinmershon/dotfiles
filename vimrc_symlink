@@ -3,7 +3,7 @@ set nocompatible
 set enc=utf-8                   " use UTF-8 encoding
 syntax enable                   " enable syntax highlighting
 set background=dark             " use a dark background
-colorscheme zenburn             " use the Zenburn color theme
+colorscheme desertEx            " use the desertEx color theme
 set number                      " show line numbers
 set title                       " show the file title when open
 if has("gui_running")           " gVim: maximize the window on startup
@@ -25,7 +25,7 @@ hi colorcolumn guibg=#303030 ctermbg=236
 
 " highlight all unnecessary whitespace as dark red
 hi ExtraWhitespace guibg=#5f0000 ctermbg=52
-hi OverLength guibg=#5f0000 guifg=#ffffff ctermbg=52 ctermfg=255
+hi OverLength guibg=#5f0000 ctermbg=52
 if has("autocmd")
     au BufWinEnter * let w:m1=matchadd("ExtraWhitespace", '\s\+$', -1)
     au BufWinEnter * let w:m2=matchadd("OverLength", '\%>80v.\+', -1)
@@ -93,23 +93,28 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 " Bundles (Vundle is required)
 Bundle 'gmarik/vundle'
-" color scheme
+" color schemes
+Bundle 'vim-scripts/desertEx'
 Bundle 'vim-scripts/Zenburn'
 " stylistic improvements
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'vim-scripts/yavdb'
 " functional improvements
-Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-unimpaired'
 Bundle 'ervandew/supertab'
 Bundle 'vim-scripts/swap-parameters'
+Bundle 'xolox/vim-easytags'
 " language add-ons
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'vim-scripts/groovy.vim'
 Bundle 'vim-scripts/grails-vim'
 Bundle 'groenewege/vim-less'
+"Bundle 'skammer/vim-css-color' " disabled until the speed problem is fixed
 filetype plugin indent on
 
 """ NERDTree settings
@@ -123,12 +128,14 @@ let NERDTreeChDirMode = 2
 let g:ctrlp_by_filename = 1
 " manually control the working directory
 let g:ctrlp_working_path_mode = 0
+" ignore a lot of stuff
+let g:ctrlp_custom_ignore = 'bin\|git\|target\|\.class'
 
 """ Filetype fixes
 if has("autocmd")
-    au BufRead,BufWrite *.gsp setlocal filetype=jsp
-    au BufRead,BufWrite *.less setlocal filetype=css
-    au BufRead,BufWrite capfile setlocal filetype=ruby
-    au BufRead,BufWrite *.coffee setlocal ts=2 sts=2 sw=2 expandtab
+    au BufNewFile,BufReadPost *.coffee setlocal ts=2 sts=2 sw=2 expandtab
+    au BufNewFile,BufReadPost *.gsp setlocal filetype=jsp
+    au BufNewFile,BufReadPost *.json setlocal filetype=javascript
+    au BufNewFile,BufReadPost capfile setlocal filetype=ruby
     au Filetype make setlocal noexpandtab
 endif
