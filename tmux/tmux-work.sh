@@ -6,7 +6,12 @@ if [ $? != 1 ]; then
 fi
 tmux new-session -d -s work
 
-tmux new-window -t work:1 -n 'Vim' vim
+kernel=`uname`
+if [ "$kernel" == "Linux" ]; then
+    tmux new-window -t work:1 -n 'Vim' "gvim -v"
+elif [ "$kernel" == "Darwin" ]; then
+    tmux new-window -t work:1 -n 'Vim' "mvim -v"
+fi
 tmux new-window -t work:2 -n 'Bash' bash
 tmux new-window -t work:3 -n 'IRC' "ssh home-server -t 'tmux -2 attach-session -t irc'"
 tmux kill-window -t work:0
