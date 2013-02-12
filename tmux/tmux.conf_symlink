@@ -30,16 +30,24 @@ unbind Left
 unbind Right
 
 # Set up pretty colors
-set -g status-fg colour15                                           # white
-if-shell 'test -f ~/.tmux.blue'   'set -g status-bg colour18'       # blue
-if-shell 'test -f ~/.tmux.green'  'set -g status-bg colour22'       # green
-if-shell 'test -f ~/.tmux.ltblue' 'set -g status-bg colour27'       # light blue
-if-shell 'test -f ~/.tmux.red'    'set -g status-bg colour88'       # red
-if-shell 'test -f ~/.tmux.purple' 'set -g status-bg colour54'       # purple
-if-shell 'test -f ~/.tmux.orange' 'set -g status-bg colour130'      # orange
-if-shell 'test -f ~/.tmux.gray'   'set -g status-bg colour236'      # gray
-if-shell 'test -f ~/.tmux.ltgray' 'set -g status-bg colour240'      # light gray
-setw -g window-status-current-bg colour15
-setw -g window-status-current-fg colour91
-set -g pane-border-fg black
-set -g pane-active-border-fg cyan
+set -g status-fg colour15                   # white
+if-shell 'test -f ~/.tmux.blue'             \
+    'set -g status-bg colour18;  setw -g window-status-current-fg colour18'
+if-shell 'test -f ~/.tmux.green'            \
+    'set -g status-bg colour22;  setw -g window-status-current-fg colour22'
+if-shell 'test -f ~/.tmux.ltblue'           \
+    'set -g status-bg colour27;  setw -g window-status-current-fg colour27'
+if-shell 'test -f ~/.tmux.red'              \
+    'set -g status-bg colour88;  setw -g window-status-current-fg colour88'
+if-shell 'test -f ~/.tmux.purple'           \
+    'set -g status-bg colour54;  setw -g window-status-current-fg colour54'
+if-shell 'test -f ~/.tmux.orange'           \
+    'set -g status-bg colour130; setw -g window-status-current-fg colour130'
+if-shell 'test -f ~/.tmux.gray'             \
+    'set -g status-bg colour236; setw -g window-status-current-fg colour236'
+if-shell 'test -f ~/.tmux.ltgray'           \
+    'set -g status-bg colour240; setw -g window-status-current-fg colour240'
+setw -g window-status-current-bg colour15   # white
+set -g pane-border-fg colour16              # black
+set -g pane-active-border-fg colour240      # light gray
+set -g pane-active-border-bg colour16       # black
