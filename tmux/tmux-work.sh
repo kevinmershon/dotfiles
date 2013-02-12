@@ -4,6 +4,7 @@ if [ $? != 1 ]; then
     tmux -2 attach -t work
     exit
 fi
+cd ~/workspace
 tmux new-session -d -s work
 
 kernel=`uname`
