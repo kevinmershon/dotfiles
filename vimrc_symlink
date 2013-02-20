@@ -41,7 +41,7 @@ set directory=.,$TEMP           " Use the TEMP directory if creating a new file
 set nowrap                      " don't wrap lines
 set showmode                    " show the mode you're in
 set numberwidth=5               " line numbers are at least 5 characters wide
-set laststatus=2                "show the status line at all times
+set laststatus=2                " show the status line at all times
 
 """ file format preferences
 set smartindent                 " automatically handle indentation
