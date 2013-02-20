@@ -42,6 +42,8 @@ set nowrap                      " don't wrap lines
 set showmode                    " show the mode you're in
 set numberwidth=5               " line numbers are at least 5 characters wide
 set laststatus=2                " show the status line at all times
+set undofile                    " store persistent undo's
+set undodir=$HOME/.vim/undo     " where to store them
 
 """ file format preferences
 set smartindent                 " automatically handle indentation
@@ -96,6 +98,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'ervandew/supertab'
 Bundle 'xolox/vim-easytags'
+Bundle "sjl/gundo.vim"
 " language add-ons
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'vim-scripts/groovy.vim'
@@ -122,6 +125,9 @@ let g:ctrlp_custom_ignore = 'bin\|git\|target\|\.class'
 """ EasyTags settings
 let g:easytags_file = '.tags'
 let g:easytags_dynamic_files = 1
+
+""" Gundo settings
+noremap <Leader>g :GundoToggle<CR>
 
 """ Filetype fixes
 if has("autocmd")
