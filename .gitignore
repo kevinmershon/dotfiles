@@ -1,2 +1,19 @@
+# Don't ignore Vim files
+!vim/vim_symlink/
+## ignore installed bundles which aren't Vundle
+vim/vim_symlink/bundle/*
+!vim/vim_symlink/bundle/vundle
+## don't ignore color symlinks to bundles
+vim/vim_symlink/*
+!vim/vim_symlink/colors
+## ignore undo files which aren't the .git-keep
+!vim/vim_symlink/undo
+vim/vim_symlink/undo/*
+!vim/vim_symlink/undo/.git-keep
+
+
 # Ctags files
 .tags
+
+# Vim swapfiles
+*.swp
