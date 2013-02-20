@@ -92,18 +92,16 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
 " functional improvements
 Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
 Bundle 'ervandew/supertab'
-Bundle 'vim-scripts/swap-parameters'
 Bundle 'xolox/vim-easytags'
 " language add-ons
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'vim-scripts/groovy.vim'
 Bundle 'vim-scripts/grails-vim'
 Bundle 'groenewege/vim-less'
+Bundle 'scrooloose/syntastic'
 "Bundle 'skammer/vim-css-color' " disabled until the speed problem is fixed
 filetype plugin indent on
 
