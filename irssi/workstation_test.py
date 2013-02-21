@@ -2,8 +2,9 @@
 import urllib
 
 if __name__ == '__main__':
+    message_text = 'PM from kmershon:test message with smiley :)'
     params = {}
-    params['message'] = 'test message'
+    params['message'] = message_text
     params = urllib.urlencode(params)
 
     print "post:"
@@ -11,5 +12,5 @@ if __name__ == '__main__':
     print f.read()
 
     print "get:"
-    f = urllib.urlopen("http://127.0.0.1:4223/?" + params)
+    f = urllib.urlopen("http://127.0.0.1:4223/?message=" + message_text)
     print f.read()
