@@ -129,6 +129,9 @@ let g:easytags_dynamic_files = 1
 """ Gundo settings
 noremap <Leader>g :GundoToggle<CR>
 
+""" Powerline settings
+let g:Powerline_symbols = 'fancy'
+
 """ Filetype fixes
 if has("autocmd")
     au BufNewFile,BufReadPost *.coffee setlocal ts=2 sts=2 sw=2 expandtab
