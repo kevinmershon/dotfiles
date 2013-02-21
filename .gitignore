@@ -1,5 +1,7 @@
 # Don't ignore Vim files
 !vim/vim_symlink/
+vim/vim_symlink/eclim
+vim/vim_symlink/plugin
 vim/vim_symlink/bundle/*
 ## ignore installed bundles which aren't Vundle
 !vim/vim_symlink/bundle/vundle/
@@ -16,3 +18,7 @@ vim/vim_symlink/undo/*
 
 # Vim swapfiles
 *.swp
+
+# Vundle things
+.netrwhist
+
