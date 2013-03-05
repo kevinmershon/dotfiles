@@ -99,6 +99,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'ervandew/supertab'
 Bundle 'xolox/vim-easytags'
 Bundle "sjl/gundo.vim"
+Bundle "airblade/vim-gitgutter"
 " language add-ons
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'vim-scripts/groovy.vim'
@@ -131,6 +132,9 @@ noremap <Leader>g :GundoToggle<CR>
 
 """ Powerline settings
 let g:Powerline_symbols = 'fancy'
+
+""" GitGutter settings
+highlight clear SignColumn
 
 """ Filetype fixes
 if has("autocmd")
