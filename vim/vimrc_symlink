@@ -56,7 +56,7 @@ set secure                      " disable unsafe commands in local .vimrc files
 
 " These settings make escaping insert and visual modes much faster when
 " using Vim in the terminal.
-set timeout timeoutlen=1000 ttimeoutlen=10
+set timeout timeoutlen=200 ttimeoutlen=10
 
 """ macros
 function! Cleanfile()
