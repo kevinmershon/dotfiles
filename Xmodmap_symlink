@@ -9,9 +9,12 @@
 !
 !
 
-! Map Caplock as Control and Control as Escape
+! Map Caplock as Control
 remove Lock = Caps_Lock
 remove Control = Control_L
 keycode 66 = Control_L
-keycode 37 = Escape
+
+! Also map Escape key to encourage Ctrl-[ in Vim
+keycode 9 = Control_L
+
 add Control = Control_L
