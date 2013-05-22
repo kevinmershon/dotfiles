@@ -96,6 +96,7 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
+Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'ervandew/supertab'
 Bundle 'xolox/vim-easytags'
 Bundle "sjl/gundo.vim"
