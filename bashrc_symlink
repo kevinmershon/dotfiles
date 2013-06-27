@@ -4,6 +4,7 @@ alias reload="source ~/.bashrc"
 alias tmux-work="~/workspace/dotfiles/tmux/tmux-work.sh"
 alias +='pushd .'
 alias -- -='popd'
+alias nyan="nc -v miku.acm.uiuc.edu 23"
 
 login() {
   already_logged_in=`ssh-add -l | grep RSA | wc -l`
