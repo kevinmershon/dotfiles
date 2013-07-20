@@ -107,6 +107,8 @@ Bundle 'vim-scripts/groovy.vim'
 Bundle 'vim-scripts/grails-vim'
 Bundle 'groenewege/vim-less'
 Bundle 'scrooloose/syntastic'
+Bundle 'guns/vim-clojure-static'
+Bundle 'tpope/vim-fireplace'
 "Bundle 'skammer/vim-css-color' " disabled until the speed problem is fixed
 filetype plugin indent on
 
