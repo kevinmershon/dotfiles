@@ -1,0 +1,10 @@
+# h-j-k-l Movement
+##################
+    "xdotool keyup l && xdotool key Left"
+        Control + h
+    "xdotool keyup j && xdotool key Down"
+        Control + j
+    "xdotool keyup k && xdotool key Up"
+        Control + k
+    "xdotool keyup l && xdotool key Right"
+        Control + l
