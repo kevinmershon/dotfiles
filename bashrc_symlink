@@ -34,7 +34,7 @@ function unmark {
 }
 function marks {
     mkdir -p "$MARKPATH"
-    ls -l "$MARKPATH" | sed 's/  / /g' | cut -d' ' -f9- | sed 's/ -/\t-/g' && echo
+    ls -l "$MARKPATH" | sed 's/\s\s*/ /g' | cut -d' ' -f9- | sed 's/ -/\t-/g' && echo
 }
 _completemarks() {
     local curw=${COMP_WORDS[COMP_CWORD]}
