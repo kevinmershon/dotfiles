@@ -98,6 +98,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'ervandew/supertab'
+Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-easytags'
 Bundle "sjl/gundo.vim"
 Bundle "airblade/vim-gitgutter"
