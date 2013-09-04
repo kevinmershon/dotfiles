@@ -1,6 +1,7 @@
 #!/bin/bash
 export TERM=screen-256color
 alias reload="source ~/.bashrc"
+alias tmux-irc="~/workspace/dotfiles/tmux/tmux-irc.sh"
 alias tmux-work="~/workspace/dotfiles/tmux/tmux-work.sh"
 alias +='pushd .'
 alias -- -='popd'
