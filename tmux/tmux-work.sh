@@ -14,7 +14,7 @@ elif [ "$kernel" == "Darwin" ]; then
     tmux new-window -t work:1 -n 'Vim' "mvim -v"
 fi
 tmux new-window -t work:2 -n 'Bash' bash
-tmux new-window -t work:3 -n 'IRC' "ssh home-server -t 'tmux -2 attach-session -t irc'"
+tmux new-window -t work:3 -n 'IRC' irssi
 tmux kill-window -t work:0
 
 tmux join-pane -h -s work:2 -t work:1
