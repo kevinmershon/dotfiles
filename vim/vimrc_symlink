@@ -102,6 +102,7 @@ Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-easytags'
 Bundle "sjl/gundo.vim"
 Bundle "airblade/vim-gitgutter"
+Bundle 'editorconfig/editorconfig-vim'
 " language add-ons
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'vim-scripts/groovy.vim'
