@@ -7,6 +7,9 @@ alias +='pushd .'
 alias -- -='popd'
 alias nyan="nc -v miku.acm.uiuc.edu 23"
 
+export CLICOLOR=1
+export LSCOLORS=ExFxBxDxCxegedabagacad
+
 login() {
   already_logged_in=`ssh-add -l | grep RSA | wc -l`
   if [ "$already_logged_in" -eq "0" ]; then
