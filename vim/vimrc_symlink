@@ -79,6 +79,9 @@ inoremap <Down> <nop>
 inoremap <Left> <nop>
 inoremap <Right> <nop>
 
+""" convenience
+set mouse=a
+
 """ Vundle settings
 filetype off
 set rtp+=~/.vim/bundle/vundle/
