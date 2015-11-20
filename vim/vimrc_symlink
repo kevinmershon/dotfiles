@@ -58,11 +58,15 @@ set secure                      " disable unsafe commands in local .vimrc files
 " using Vim in the terminal.
 set timeout timeoutlen=200 ttimeoutlen=10
 
+set ff=unix
+set ffs=unix
+
 """ macros
 function! Cleanfile()
     if &modifiable
         " trim whitespace on save
         :%s/\s\+$//e
+        :%s///e
     endif
 endfunction
 autocmd! bufreadpost * call Cleanfile()
