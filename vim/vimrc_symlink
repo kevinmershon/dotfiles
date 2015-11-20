@@ -117,6 +117,7 @@ Bundle 'vim-scripts/grails-vim'
 Bundle 'groenewege/vim-less'
 Bundle 'scrooloose/syntastic'
 Bundle 'guns/vim-clojure-static'
+Bundle 'tpope/vim-fireplace'
 Bundle 'vim-scripts/paredit.vim'
 Bundle 'mustache/vim-mustache-handlebars'
 "Bundle 'skammer/vim-css-color' " disabled until the speed problem is fixed
