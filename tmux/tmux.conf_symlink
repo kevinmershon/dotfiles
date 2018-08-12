@@ -54,3 +54,12 @@ setw -g window-status-current-bg colour15   # white
 set -g pane-border-fg colour16              # black
 set -g pane-active-border-fg colour240      # light gray
 set -g pane-active-border-bg colour16       # black
+
+# clipboard stuff
+set -g default-shell $SHELL
+set -g default-command "reattach-to-user-namespace -l ${SHELL}"
+# battery icon
+set -g status-right '#{battery_status_bg} Batt: #{battery_icon} #{battery_percentage} | %a %h-%d %H:%M '
+
+run '~/.tmux/plugins/tpm/tpm'
+set -g @plugin 'tmux-plugins/tmux-battery'

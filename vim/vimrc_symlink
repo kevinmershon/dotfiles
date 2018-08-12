@@ -48,8 +48,8 @@ set undodir=$HOME/.vim/undo     " where to store them
 """ file format preferences
 set smartindent                 " automatically handle indentation
 set expandtab                   " use spaces instead of hard tabs
-set tabstop=4                   " use 2 spaces for tabs
-set shiftwidth=4                " set the default indentation width for smartindent
+set tabstop=2                   " use 2 spaces for tabs
+set shiftwidth=2                " set the default indentation width for smartindent
 
 set exrc                        " allow per-directory override of .vimrc settings
 set secure                      " disable unsafe commands in local .vimrc files
@@ -71,6 +71,7 @@ function! Cleanfile()
 endfunction
 autocmd! bufreadpost * call Cleanfile()
 autocmd! bufwritepre * call Cleanfile()
+
 
 """ vim discipline
 " unmap the arrow keys
@@ -98,7 +99,8 @@ Bundle 'vim-scripts/Zenburn'
 " stylistic improvements
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 " functional improvements
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-repeat'
@@ -107,9 +109,11 @@ Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'ervandew/supertab'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-easytags'
-Bundle "sjl/gundo.vim"
+"Bundle "sjl/gundo.vim"
+Bundle 'mbbill/undotree'
 Bundle "airblade/vim-gitgutter"
 Bundle 'editorconfig/editorconfig-vim'
+Bundle 'chrisbra/csv.vim'
 " language add-ons
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'vim-scripts/groovy.vim'
@@ -120,6 +124,7 @@ Bundle 'guns/vim-clojure-static'
 Bundle 'tpope/vim-fireplace'
 Bundle 'vim-scripts/paredit.vim'
 Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'kevinmershon/netsuite-browserlink.vim'
 "Bundle 'skammer/vim-css-color' " disabled until the speed problem is fixed
 filetype plugin indent on
 
@@ -129,6 +134,7 @@ noremap <Leader>n :NERDTree
 noremap <F2> :NERDTreeToggle<CR>
 " set the working directory when changing root
 let NERDTreeChDirMode = 2
+let g:NERDTreeWinSize=50
 """ CtrlP Settings
 " use file mode instead of path mode
 let g:ctrlp_by_filename = 1
@@ -142,7 +148,8 @@ let g:easytags_file = '.tags'
 let g:easytags_dynamic_files = 1
 
 """ Gundo settings
-noremap <Leader>g :GundoToggle<CR>
+"noremap <Leader>g :GundoToggle<CR>
+noremap <Leader>g :UndotreeToggle<CR>
 
 """ Powerline settings
 let g:Powerline_symbols = 'fancy'
@@ -152,9 +159,32 @@ highlight clear SignColumn
 
 """ Filetype fixes
 if has("autocmd")
-    au BufNewFile,BufReadPost *.coffee setlocal ts=2 sts=2 sw=2 expandtab
-    au BufNewFile,BufReadPost *.gsp setlocal filetype=jsp
     au BufNewFile,BufReadPost *.json setlocal filetype=javascript
     au BufNewFile,BufReadPost capfile setlocal filetype=ruby
     au Filetype make setlocal noexpandtab
 endif
+
+
+
+
+
+" Clojure helpers
+if has("autocmd")
+    au BufNewFile,BufReadPost *.cljc setlocal filetype=clojure
+    au BufNewFile,BufReadPost *.cljs setlocal filetype=clojure
+endif
+
+"FUNCTION: s:Component(componentname) {{{1
+let s:Component = {}
+function! s:Component(name)
+  exe "normal o(defcomponent " . a:name ."\n"
+  \ . "[data :- {} owner {:keys [] :as opts}]\n"
+  \ . "(render\n"
+  \ . "[_]\n"
+  \ . "))\<Esc>"
+endfunction
+command! Component call s:Component( <args> )
+
+" macvim hax
+let g:matchparen_timeout = 10
+let g:matchparen_insert_timeout = 10
