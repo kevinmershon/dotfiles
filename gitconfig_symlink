@@ -19,3 +19,5 @@
     default = upstream
 [user]
     name = Kevin Mershon
+[pager]
+    branch = false
