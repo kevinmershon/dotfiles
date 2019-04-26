@@ -1,11 +1,8 @@
 #!/bin/bash
 export TERM=screen-256color
 alias reload="source ~/.bashrc"
-alias tmux-irc="~/workspace/dotfiles/tmux/tmux-irc.sh"
 alias tmux-work="~/workspace/dotfiles/tmux/tmux-work.sh"
-alias +='pushd .'
-alias -- -='popd'
-alias nyan="nc -v miku.acm.uiuc.edu 23"
+alias fixmes="grep --exclude \"*.sw?\" -r \"FIXME\" ."
 
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
@@ -18,6 +15,14 @@ login() {
   fi
 }
 
+rename-all() {
+  if [ "$1" = "" ]; then
+    echo "Specify original and new extension"
+    return
+  fi
+  eval "for f in *.$1; do mv -- \"\$f\" \"\${f%.$1}.$2\"; done"
+}
+
 ###
 # jump aliases, courtesy Jeroen Janssens:
 # http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
@@ -28,6 +33,7 @@ function jump {
         echo "Please specify a mark"
         return 1
     fi
+    pushd . > /dev/null
     cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
 }
 function mark {

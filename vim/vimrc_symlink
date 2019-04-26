@@ -98,34 +98,26 @@ Bundle 'vim-scripts/desertEx'
 Bundle 'vim-scripts/Zenburn'
 " stylistic improvements
 Bundle 'scrooloose/nerdtree'
-Bundle 'kien/ctrlp.vim'
 Bundle 'vim-airline/vim-airline'
 Bundle 'vim-airline/vim-airline-themes'
 " functional improvements
-Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'ervandew/supertab'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-easytags'
-"Bundle "sjl/gundo.vim"
 Bundle 'mbbill/undotree'
-Bundle "airblade/vim-gitgutter"
+Bundle 'airblade/vim-gitgutter'
 Bundle 'editorconfig/editorconfig-vim'
-Bundle 'chrisbra/csv.vim'
 " language add-ons
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'vim-scripts/groovy.vim'
-Bundle 'vim-scripts/grails-vim'
-Bundle 'groenewege/vim-less'
 Bundle 'scrooloose/syntastic'
 Bundle 'guns/vim-clojure-static'
 Bundle 'tpope/vim-fireplace'
 Bundle 'vim-scripts/paredit.vim'
 Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'kevinmershon/netsuite-browserlink.vim'
-"Bundle 'skammer/vim-css-color' " disabled until the speed problem is fixed
+Bundle 'andreshazard/vim-freemarker'
 filetype plugin indent on
 
 """ NERDTree settings
@@ -135,24 +127,13 @@ noremap <F2> :NERDTreeToggle<CR>
 " set the working directory when changing root
 let NERDTreeChDirMode = 2
 let g:NERDTreeWinSize=50
-""" CtrlP Settings
-" use file mode instead of path mode
-let g:ctrlp_by_filename = 1
-" manually control the working directory
-let g:ctrlp_working_path_mode = 0
-" ignore a lot of stuff
-let g:ctrlp_custom_ignore = 'bin\|git\|target\|\.class'
 
 """ EasyTags settings
 let g:easytags_file = '.tags'
 let g:easytags_dynamic_files = 1
 
-""" Gundo settings
-"noremap <Leader>g :GundoToggle<CR>
+""" UndoTree settings
 noremap <Leader>g :UndotreeToggle<CR>
-
-""" Powerline settings
-let g:Powerline_symbols = 'fancy'
 
 """ GitGutter settings
 highlight clear SignColumn
@@ -160,7 +141,6 @@ highlight clear SignColumn
 """ Filetype fixes
 if has("autocmd")
     au BufNewFile,BufReadPost *.json setlocal filetype=javascript
-    au BufNewFile,BufReadPost capfile setlocal filetype=ruby
     au Filetype make setlocal noexpandtab
 endif
 
@@ -173,17 +153,6 @@ if has("autocmd")
     au BufNewFile,BufReadPost *.cljc setlocal filetype=clojure
     au BufNewFile,BufReadPost *.cljs setlocal filetype=clojure
 endif
-
-"FUNCTION: s:Component(componentname) {{{1
-let s:Component = {}
-function! s:Component(name)
-  exe "normal o(defcomponent " . a:name ."\n"
-  \ . "[data :- {} owner {:keys [] :as opts}]\n"
-  \ . "(render\n"
-  \ . "[_]\n"
-  \ . "))\<Esc>"
-endfunction
-command! Component call s:Component( <args> )
 
 " macvim hax
 let g:matchparen_timeout = 10
