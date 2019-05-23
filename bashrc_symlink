@@ -8,10 +8,13 @@ export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
 login() {
-  already_logged_in=`ssh-add -l | grep RSA | wc -l`
-  if [ "$already_logged_in" -eq "0" ]; then
-      eval `ssh-agent`
-      ssh-add
+  SESSION_ID=`pgrep ssh-agent`
+  if [ "$?" != "0" ]; then
+    eval `ssh-agent -s`
+  fi
+  ID_RSA_KEY=`ssh-add -l | grep id_rsa`
+  if [ "$?" != "0" ]; then
+    ssh-add ~/.ssh/id_rsa
   fi
 }
 
