@@ -10,12 +10,9 @@ set -g default-terminal "screen-256color"
 set -s escape-time 0
 
 # Allow for respawning windows when they're accidentally closed
-set -g set-remain-on-exit on
+set-hook -g session-created 'set remain-on-exit on'
 unbind R
 bind R respawn-pane -k
-
-# Allow mouse clicks to select panes
-set -g mouse-select-pane on
 
 # Set up Vim-like keybindings.
 setw -g mode-keys vi
@@ -35,30 +32,30 @@ unbind Right
 # Set up pretty colors
 set -g status-fg colour15                   # white
 if-shell 'test -f ~/.tmux.blue'             \
-    'set -g status-bg colour18;  setw -g window-status-current-fg colour18'
+    'set -g status-bg colour18;  set-hook -g session-created "set window-status-current-fg colour18"'
 if-shell 'test -f ~/.tmux.green'            \
-    'set -g status-bg colour22;  setw -g window-status-current-fg colour22'
+    'set -g status-bg colour22;  set-hook -g session-created "set window-status-current-fg colour22"'
 if-shell 'test -f ~/.tmux.ltblue'           \
-    'set -g status-bg colour27;  setw -g window-status-current-fg colour27'
+    'set -g status-bg colour27;  set-hook -g session-created "set window-status-current-fg colour27"'
 if-shell 'test -f ~/.tmux.red'              \
-    'set -g status-bg colour88;  setw -g window-status-current-fg colour88'
+    'set -g status-bg colour88;  set-hook -g session-created "set window-status-current-fg colour88"'
 if-shell 'test -f ~/.tmux.purple'           \
-    'set -g status-bg colour54;  setw -g window-status-current-fg colour54'
+    'set -g status-bg colour54;  set-hook -g session-created "set window-status-current-fg colour54"'
 if-shell 'test -f ~/.tmux.orange'           \
-    'set -g status-bg colour130; setw -g window-status-current-fg colour130'
+    'set -g status-bg colour130; set-hook -g session-created "set window-status-current-fg colour130"'
 if-shell 'test -f ~/.tmux.gray'             \
-    'set -g status-bg colour236; setw -g window-status-current-fg colour236'
+    'set -g status-bg colour236; set-hook -g session-created "set window-status-current-fg colour236"'
 if-shell 'test -f ~/.tmux.ltgray'           \
-    'set -g status-bg colour240; setw -g window-status-current-fg colour240'
-setw -g window-status-current-bg colour15   # white
-set -g pane-border-fg colour16              # black
-set -g pane-active-border-fg colour240      # light gray
-set -g pane-active-border-bg colour16       # black
+    'set -g status-bg colour240; set-hook -g session-created "set window-status-current-fg colour240"'
+set-hook -g session-created 'setw window-status-current-bg colour15'   # white
+set-hook -g session-created 'set pane-border-fg colour16'              # black
+set-hook -g session-created 'set pane-active-border-fg colour240'      # light gray
+set-hook -g session-created 'set pane-active-border-bg colour16'       # black
 
 # clipboard stuff
-set -g default-shell $SHELL
-set -g default-command "reattach-to-user-namespace -l ${SHELL}"
-# battery icon
+#set -g default-shell $SHELL
+#set -g default-command "reattach-to-user-namespace -l ${SHELL}"
+## battery icon
 set -g status-right '#{battery_status_bg} Batt: #{battery_icon} #{battery_percentage} | %a %h-%d %H:%M '
 
 run '~/.tmux/plugins/tpm/tpm'
