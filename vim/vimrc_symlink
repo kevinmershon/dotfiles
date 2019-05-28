@@ -115,7 +115,6 @@ Bundle 'ervandew/supertab'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-easytags'
 Bundle 'mbbill/undotree'
-""" for vim-gitgutter, after install checkout commit faa1e95
 Bundle 'airblade/vim-gitgutter'
 Bundle 'editorconfig/editorconfig-vim'
 " language add-ons
@@ -154,6 +153,9 @@ noremap <Leader>g :UndotreeToggle<CR>
 
 """ GitGutter settings
 highlight clear SignColumn
+highlight GitGutterAdd    guifg=#009900 ctermfg=2
+highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 
 """ Filetype fixes
 if has("autocmd")
