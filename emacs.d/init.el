@@ -48,6 +48,30 @@
         (message "Starting a server...")
         (server-start)))))
 
+;; Define package repositories
+(require 'package)
+(add-to-list 'package-archives
+             '("tromey" . "http://tromey.com/elpa/") t)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives
+             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+
+(add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(magit . "melpa-stable") t)
+
+
+;; Load and activate emacs packages. Do this first so that the
+;; packages are loaded before you start trying to modify them.
+;; This also sets the load path.
+(package-initialize)
+
+;; Download the ELPA archive description if needed.
+;; This informs Emacs about the latest versions of all packages, and
+;; makes them available for download.
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
 ; theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'desert t)
@@ -87,3 +111,12 @@
 
 ; comment with double Control-C
 (global-set-key (kbd "C-c C-c") 'comment-line)
+
+; clojure and cider stuff
+(load "~/.emacs.d/clojure-mode-extra-font-locking.el")
+(require 'clojure-mode-extra-font-locking)
+(setq cider-repl-pop-to-buffer-on-connect t)
+(setq cider-show-error-buffer t)
+(setq cider-auto-select-error-buffer t)
+
+(add-hook 'clojure-mode-hook #'aggressive-indent-mode)
