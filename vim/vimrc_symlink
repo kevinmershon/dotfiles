@@ -122,7 +122,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'w0rp/ale'
 Bundle 'guns/vim-clojure-static'
 Bundle 'tpope/vim-fireplace'
-Bundle 'vim-scripts/paredit.vim'
+Bundle 'eraserhd/parinfer-rust'
 Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'kevinmershon/netsuite-browserlink.vim'
 Bundle 'andreshazard/vim-freemarker'
@@ -159,7 +159,6 @@ highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 
 """ Filetype fixes
 if has("autocmd")
-    au BufNewFile,BufReadPost *.json setlocal filetype=javascript
     au Filetype make setlocal noexpandtab
 endif
 
