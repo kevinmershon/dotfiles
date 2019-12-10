@@ -3,6 +3,7 @@ export TERM=screen-256color
 alias reload="source ~/.bashrc"
 alias tmux-work="~/workspace/dotfiles/tmux/tmux-work.sh"
 alias fixmes="grep --exclude \"*.sw?\" -r \"FIXME\" ."
+alias emacs="emacs -nw $1"
 
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad

@@ -124,7 +124,6 @@ Bundle 'guns/vim-clojure-static'
 Bundle 'tpope/vim-fireplace'
 Bundle 'eraserhd/parinfer-rust'
 Bundle 'mustache/vim-mustache-handlebars'
-Bundle 'kevinmershon/netsuite-browserlink.vim'
 Bundle 'andreshazard/vim-freemarker'
 filetype plugin indent on
 

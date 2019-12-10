@@ -16,7 +16,7 @@ kernel=`uname`
 if [ "$kernel" == "Linux" ]; then
     tmux new-window -t work:2 -n 'Vim' "gvim -v"
 elif [ "$kernel" == "Darwin" ]; then
-    tmux new-window -t work:2 -n 'Vim' "vim"
+    tmux new-window -t work:2 -n 'emacs' "emacs -nw"
 fi
 
 tmux join-pane -v -s work:2 -t work:1
