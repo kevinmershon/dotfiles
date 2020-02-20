@@ -34,8 +34,14 @@ rename-all() {
 export MARKPATH=$HOME/.marks
 function jump {
     if [ "$1" == "" ]; then
-        echo "Please specify a mark"
-        return 1
+        m=`ls ~/.marks | fzf`
+        if [ "$m" == "" ]; then
+          echo "Please specify a mark"
+          return 1
+        fi
+        pushd . > /dev/null
+        cd -P "$MARKPATH/$m" 2>/dev/null || echo "No such mark: $p"
+        return 0
     fi
     pushd . > /dev/null
     cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
