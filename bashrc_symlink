@@ -81,12 +81,16 @@ function rco {
   if [ "$1" == "" ]; then
     r=`git remote | fzf`
   fi
-  echo "Fetching from upstream $r..."
-  git fetch "$r" --prune
-  b="$2"
-  if [ "$2" == "" ]; then
-    b=`git branch -r -l "$r/*" | fzf`
+  if [ $? -eq 0 ]; then
+    echo "Fetching from upstream $r..."
+    git fetch "$r" --prune
+    b="$2"
+    if [ "$2" == "" ]; then
+      b=`git branch -r -l "$r/*" | fzf`
+    fi
+    if [ $? -eq 0 ]; then
+      remote_name=`echo "$b" | awk '{bn = index($0, "/"); print substr($0, bn+1);}'`
+      git checkout -b "$remote_name" "$r/$remote_name"
+    fi
   fi
-  remote_name=`echo "$b" | awk '{split($0,a,"/"); print a[2]}'`
-  git checkout -b "$remote_name" "$r/$remote_name"
 }
