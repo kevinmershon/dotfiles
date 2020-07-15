@@ -103,6 +103,7 @@ Bundle 'gmarik/vundle'
 Bundle 'vim-scripts/desertEx'
 Bundle 'vim-scripts/Zenburn'
 " stylistic improvements
+Bundle 'ctrlpvim/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'vim-airline/vim-airline'
 Bundle 'vim-airline/vim-airline-themes'
@@ -125,6 +126,8 @@ Bundle 'tpope/vim-fireplace'
 Bundle 'eraserhd/parinfer-rust'
 Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'andreshazard/vim-freemarker'
+Bundle 'guns/vim-sexp'
+Bundle 'liquidz/vim-iced'
 filetype plugin indent on
 
 """ Ale (async linter) settings
@@ -149,6 +152,10 @@ let g:easytags_dynamic_files = 1
 
 """ UndoTree settings
 noremap <Leader>g :UndotreeToggle<CR>
+
+""" Vim-iced key mappings
+let mapleader=","
+let g:iced_enable_default_key_mappings = v:true
 
 """ GitGutter settings
 highlight clear SignColumn
