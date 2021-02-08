@@ -94,3 +94,10 @@ function rco {
     fi
   fi
 }
+
+function withenv {
+  set -o allexport;
+  source .env;
+  set +o allexport;
+  "${@:1}";
+}
