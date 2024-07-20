@@ -21,3 +21,5 @@
     name = Kevin Mershon
 [pager]
     branch = false
+[init]
+	defaultBranch = development
