@@ -1,0 +1,79 @@
+#!/bin/zsh
+alias reload="source ~/.zshrc"
+alias fixmes="grep --exclude \"*.sw?\" -r \"FIXME\" ."
+alias emacs="emacs -nw $1"
+
+###
+# jump aliases, courtesy Jeroen Janssens:
+# http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
+###
+export MARKPATH=$HOME/.marks
+function jump {
+    if [[ -z "$1" ]]; then
+        m=$(ls ~/.marks | fzf)
+        if [[ -z "$m" ]]; then
+          echo "Please specify a mark"
+          return 1
+        fi
+        pushd . > /dev/null
+        cd -P "$MARKPATH/$m" 2>/dev/null || echo "No such mark: $m"
+        return 0
+    fi
+    pushd . > /dev/null
+    cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
+}
+function mark {
+    mkdir -p "$MARKPATH"; ln -sf "$(pwd)" "$MARKPATH/$1"
+}
+function unmark {
+    rm -i "$MARKPATH/$1"
+}
+function marks {
+    mkdir -p "$MARKPATH"
+    ls -l "$MARKPATH" | sed 's/\s\s*/ /g' | cut -d' ' -f9- | sed 's/ -/\t-/g' && echo
+}
+_completemarks() {
+    local curw=${words[CURRENT]}
+    local wordlist=$(find $MARKPATH -type l -printf "%f\n")
+    reply=($(compgen -W "${wordlist}" -- "$curw"))
+    return 0
+}
+if [[ "$(uname)" == "Darwin" ]]; then
+    function marks {
+        \ls -l "$MARKPATH" | tail -n +2 | sed 's/  / /g' | cut -d' ' -f9- | awk -F ' -> ' '{printf "%-10s -> %s\n", $1, $2}'
+    }
+    _completemarks() {
+        local curw=${words[CURRENT]}
+        local wordlist=$(find $MARKPATH -type l | xargs -n1 basename)
+        reply=($(compgen -W "${wordlist}" -- "$curw"))
+        return 0
+    }
+fi
+compctl -K _completemarks jump unmark
+alias j="jump"
+
+function rco {
+  local r="$1"
+  if [[ -z "$1" ]]; then
+    r=$(git remote | fzf)
+  fi
+  if [[ $? -eq 0 ]]; then
+    echo "Fetching from upstream $r..."
+    git fetch "$r" --prune
+    local b="$2"
+    if [[ -z "$2" ]]; then
+      b=$(git branch -r -l "$r/*" | fzf)
+    fi
+    if [[ $? -eq 0 ]]; then
+      local remote_name=$(echo "$b" | awk '{bn = index($0, "/"); print substr($0, bn+1);}')
+      git checkout -b "$remote_name" "$r/$remote_name"
+    fi
+  fi
+}
+
+function withenv {
+  set -a
+  source .env
+  set +a
+  "$@"
+}
